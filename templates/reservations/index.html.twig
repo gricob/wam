@@ -2,6 +2,15 @@
 
 {% block body %}
 <table>
+    <thead>
+        <th>Localizador</th>
+        <th>Huésped</th>
+        <th>Fecha de entrada</th>
+        <th>Fecha de salida</th>
+        <th>Hotel</th>
+        <th>Precio</th>
+        <th>Posibles acciones</th>
+    </thead>
     <tbody>
     {% for reservation in reservations %}
         <tr id="reservation-{{ reservation.id }}" class="reservation">
