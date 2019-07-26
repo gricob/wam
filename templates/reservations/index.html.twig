@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<table>
+    <thead>
+        <th>Localizador</th>
+        <th>Huésped</th>
+        <th>Fecha de entrada</th>
+        <th>Fecha de salida</th>
+        <th>Hotel</th>
+        <th>Precio</th>
+        <th>Posibles acciones</th>
+    </thead>
+    <tbody>
+    {% for reservation in reservations %}
+        <tr id="reservation-{{ reservation.id }}" class="reservation">
+            <td class='id'>{{ reservation.id }}</td>
+            <td class='guest'>{{ reservation.guest }}</td>
+            <td class='checkin'>{{ reservation.checkin }}</td>
+            <td class='checkout'>{{ reservation.checkout }}</td>
+            <td class='hotel'>{{ reservation.hotel }}</td>
+            <td class='amount'>{{ reservation.amount }}</td>
+            <td class='actions'>{{ reservation.actions }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
