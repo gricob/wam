@@ -28,4 +28,13 @@ class ReservationRepository implements Repository
 
         return $reservations;
     }
+
+    public function find(string $query): array 
+    {
+        $reservations = $this->all();
+
+        return array_filter($reservations, function($reservation) use ($query) {
+            return $reservation->contains($query);
+        });
+    }
 }

@@ -31,4 +31,14 @@ class Reservation
 
         return $reservation;
     }
+
+    public function contains($value): bool
+    {
+        foreach(get_object_vars($this) as $property) {
+            if(strpos($property, $value) !== false) 
+                return true;
+        }
+
+        return false;
+    }
 }
