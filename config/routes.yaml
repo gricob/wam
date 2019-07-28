@@ -1,3 +1,6 @@
 reservations:
     path: /reservations
     controller: App\Controller\ReservationController::index
+reservations_export:
+    path: /reservations/{format}
+    controller: App\Controller\ReservationController::export

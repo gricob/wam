@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use JsonSerializable;
+
 class Reservation
 {
     public $id;
