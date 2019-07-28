@@ -18,7 +18,13 @@ class Reservation
 
     public $actions;
 
-    public static function createFromArray($attributes)
+    /**
+     * Crea la reserva a partir de un array asociativo
+     *
+     * @param array $attributes
+     * @return void
+     */
+    public static function createFromArray(array $attributes)
     {
         $reservation = new Reservation;
         $reservation->id = $attributes['id'];
@@ -32,8 +38,17 @@ class Reservation
         return $reservation;
     }
 
-    public function contains($value): bool
+    /**
+     * Comprueba si la reserva contiene el valor pasado como parámetro 
+     * en alguna de sus propiedades
+     *
+     * @param string $value
+     * @return boolean
+     */
+    public function contains(string $value): bool
     {
+        if(empty($value)) return false;
+
         foreach(get_object_vars($this) as $property) {
             if(strpos($property, $value) !== false) 
                 return true;

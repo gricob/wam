@@ -17,20 +17,21 @@ class FilterReservationsTest extends WebTestCase
         yield ['Hotel 4'];
         yield ['112.49'];
         yield ['Cobrar Devolver'];
+        yield ['', 2];                  // Cuando la query está vacía devuelve todos los registros
     }
 
     /** 
      * @test 
      * @dataProvider filterQueriesProvider
      * */
-    public function can_filter_reservations($query)
+    public function can_filter_reservations($query, $expectedRows = 1)
     {
         $client = static::createClient();
 
         $crawler = $client->request('GET', "/reservations?q=$query");
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertEquals(1, $crawler->filter('tr.reservation')->count());
+        $this->assertEquals($expectedRows, $crawler->filter('tr.reservation')->count());
         $this->assertContainsReservation(34637, 'Nombre 1', '2018-10-04', '2018-10-05', 'Hotel 4', '112.49', 'Cobrar Devolver');
     }
 }

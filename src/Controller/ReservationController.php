@@ -18,7 +18,7 @@ class ReservationController extends AbstractController
     public function index(Request $request)
     {
         $reservations = 
-            $request->query->has('q') 
+            $request->query->has('q') && !empty($request->query->get('q'))
                 ? $this->repository->find($request->query->get('q'))
                 : $this->repository->all();
 

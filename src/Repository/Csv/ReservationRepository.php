@@ -7,6 +7,11 @@ use App\Repository\Repository;
 
 class ReservationRepository implements Repository
 {
+    /**
+     * Devuelve todos los registros
+     *
+     * @return array
+     */
     public function all(): array
     {
         $raw = fopen($_ENV['RESERVATIONS_CSV'], 'r');
@@ -29,6 +34,12 @@ class ReservationRepository implements Repository
         return $reservations;
     }
 
+    /**
+     * Devuelve los registros que contienen el valor pasado como parámetro
+     *
+     * @param string $query
+     * @return array
+     */
     public function find(string $query): array 
     {
         $reservations = $this->all();

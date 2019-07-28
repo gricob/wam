@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<form action="/reservations" method="GET">
+    <input type="text" name="q" placeholder="Filtrar">
+    <button type="submit">Filtrar</button>
+</form>
 <table>
     <thead>
         <th>Localizador</th>
