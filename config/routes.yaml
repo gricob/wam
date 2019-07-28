@@ -1,3 +1,9 @@
+home:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: reservations
+        permanent: true
 reservations:
     path: /reservations
     controller: App\Controller\ReservationController::index
