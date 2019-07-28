@@ -2,7 +2,9 @@
 
 namespace App\Model;
 
-class Reservation
+use JsonSerializable;
+
+class Reservation implements JsonSerializable
 {
     public $id;
 
@@ -55,5 +57,10 @@ class Reservation
         }
 
         return false;
+    }
+
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }

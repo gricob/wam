@@ -44,8 +44,10 @@ class ReservationRepository implements Repository
     {
         $reservations = $this->all();
 
-        return array_filter($reservations, function($reservation) use ($query) {
-            return $reservation->contains($query);
-        });
+        return array_values(
+            array_filter($reservations, function($reservation) use ($query) {
+                return $reservation->contains($query);
+            })
+        );
     }
 }
