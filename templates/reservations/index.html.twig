@@ -1,33 +1,39 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<form action="/reservations" method="GET">
-    <input type="text" name="q" placeholder="Filtrar">
-    <button type="submit">Filtrar</button>
-</form>
-<a href="/reservations/json?q={{ query }}" target="_blank">Descargar resultados como JSON</a>
-<table>
-    <thead>
-        <th>Localizador</th>
-        <th>Huésped</th>
-        <th>Fecha de entrada</th>
-        <th>Fecha de salida</th>
-        <th>Hotel</th>
-        <th>Precio</th>
-        <th>Posibles acciones</th>
-    </thead>
-    <tbody>
-    {% for reservation in reservations %}
-        <tr id="reservation-{{ reservation.id }}" class="reservation">
-            <td class='id'>{{ reservation.id }}</td>
-            <td class='guest'>{{ reservation.guest }}</td>
-            <td class='checkin'>{{ reservation.checkin }}</td>
-            <td class='checkout'>{{ reservation.checkout }}</td>
-            <td class='hotel'>{{ reservation.hotel }}</td>
-            <td class='amount'>{{ reservation.amount }}</td>
-            <td class='actions'>{{ reservation.actions }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="container">
+    <div class="d-flex justify-content-between w-100">
+        <form action="/reservations" method="GET" class="form-inline mt-4 mb-4">
+            <input class="form-control" type="text" name="q" placeholder="Filtrar">
+            <button class="btn btn-primary ml-2" type="submit">Filtrar</button>
+        </form>
+        <div>
+            <a class="btn btn-light mt-4" href="/reservations/json?q={{ query }}" target="_blank">Descargar resultados como JSON</a>
+        </div>
+    </div>
+    <table class="table mt-2">
+        <thead>
+            <th>Localizador</th>
+            <th>Huésped</th>
+            <th>Fecha de entrada</th>
+            <th>Fecha de salida</th>
+            <th>Hotel</th>
+            <th>Precio</th>
+            <th>Posibles acciones</th>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr id="reservation-{{ reservation.id }}" class="reservation">
+                <td class='id'>{{ reservation.id }}</td>
+                <td class='guest'>{{ reservation.guest }}</td>
+                <td class='checkin'>{{ reservation.checkin }}</td>
+                <td class='checkout'>{{ reservation.checkout }}</td>
+                <td class='hotel'>{{ reservation.hotel }}</td>
+                <td class='amount'>{{ reservation.amount }}</td>
+                <td class='actions'>{{ reservation.actions }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
